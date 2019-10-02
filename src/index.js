@@ -2,7 +2,6 @@ require('dotenv/config');
 require('date-utils');
 const admin = require('firebase-admin');
 const getData = require('./modules/getData');
-const date = new Date();
 
 admin.initializeApp({
     credential: admin.credential.cert(require('../config/serviceAccountKey')),
@@ -13,18 +12,22 @@ const database = admin.database();
 
 function uploadData() {
     const ref = database.ref('data' + String(process.env.SENSOR_NUMBER));
-    ref.set({
+    const date = new Date();
+    const data = {
         "templature": getData.getTemplature(),
         "humidity": getData.getHumidity(),
         "solihumidity": getData.getSoliHumidity(),
         "barometricpressure": getData.getBarometricPressure(),
         "illuminance": getData.getIlluminance(),
         "timestamp": date.toFormat("YYYY年MM月DD日HH24時MI分SS秒")
-    }).catch((error) => {
+    };
+    console.log(data);
+    ref.set(data)
+        .catch((error) => {
         console.log(error);
     });
 }
 
 setInterval(function () {
     uploadData()
-}, 10000);
+}, process.env.UPLOAD_TIMEOUT);
