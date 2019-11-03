@@ -16,10 +16,10 @@ function uploadData() {
     const data = {
         "templature": getData.getTemplature(),
         "humidity": getData.getHumidity(),
-        "solihumidity": getData.getSoliHumidity(),
+        /*"solihumidity": getData.getSoliHumidity(),
         "barometricpressure": getData.getBarometricPressure(),
         "illuminance": getData.getIlluminance(),
-        "timestamp": date.toFormat("YYYY年MM月DD日HH24時MI分SS秒")
+        "timestamp": date.toFormat("YYYY年MM月DD日HH24時MI分SS秒")*/
     };
     console.log(data);
     ref.set(data)
