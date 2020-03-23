@@ -1,16 +1,23 @@
 /* センサーデータ取得モジュール */
 
+let data = {};
+
 module.exports = {
 
+    /* データセット */
+    "setData": function (data) {
+        this.data = data;
+    },
+
     /* 温度取得 */
-    "getTemplature": function () {
-        return 25;
+    "getTemperature": function () {
+        return data.temperature;
     },
 
     /* 湿度取得 */
 
     "getHumidity": function () {
-        return 50;
+        return data.humidity;
     },
 
     /* 土壌湿度取得 */

@@ -3,5 +3,6 @@
   "humidity": 50,
   "solihumidity": 65,
   "barometricpressure": 1023,
-  "illuminance": 60
+  "illuminance": 60,
+  "timestamp": "YYYY年MM月DD日HH24時MI分SS秒"
 }
